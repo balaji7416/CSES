@@ -1,0 +1,12 @@
+#ignore all executable files
+*.exe
+*.out
+*.a
+
+#ignore all .vscode folders
+.vscode/
+.cph
+
+#os junk files
+.DS_Store
+Thumbs.db
