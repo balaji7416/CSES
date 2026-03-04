@@ -3,6 +3,7 @@ using namespace std;
 
 /*
     Problem : Building Roads
+    Pattern : dfs
     Link : https://cses.fi/problemset/task/1666
     Time complexity : O(E+v)
     Space complexity : O(v+E)

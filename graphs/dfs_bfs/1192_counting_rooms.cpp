@@ -3,6 +3,7 @@ using namespace std;
 
 /*
     Problem 1192: Counting Rooms
+    Pattern: dfs/bfs
     Time: O(n*m) Space: O(n*m)
     Link: https://cses.fi/problemset/task/1192
 */

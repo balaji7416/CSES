@@ -3,6 +3,7 @@ using namespace std;
 
 /*
     Problem 1193: Labyrinth
+    Pattern: BFS
     Time: O(n*m) Space: O(n*m)
     Link: https://cses.fi/problemset/task/1193
 */
