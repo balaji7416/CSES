@@ -13,37 +13,39 @@ using namespace std;
     child[u] = child of u (for reconstruction of path)
 
 */
-
-int dfs(int u, vector<vector<int>> &adj, vector<int> &child, vector<int> &dp)
+vector<vector<int>> adj;
+vector<int> dp;
+vector<int> child;
+int d;
+int dfs(int u)
 {
-    int n = adj.size();
-    if (u == n - 1)
-    {
+    if (u == d)
         return 1;
-    }
+
     if (dp[u] != -1)
-    {
         return dp[u];
-    }
-    int mnodes = 0; // maxnodes init to zero
+
+    int max_nodes = 0;
     for (auto v : adj[u])
     {
-        int nodes = dfs(v, adj, child, dp);
-        if (nodes > mnodes)
+        int nodes = dfs(v);
+        if (nodes > max_nodes)
         {
+            max_nodes = nodes;
             child[u] = v;
-            mnodes = nodes;
         }
     }
-    // if no path found return just 0, so that recursion won't be corrupted
-    return dp[u] = mnodes == 0 ? 0 : 1 + mnodes;
+    return dp[u] = max_nodes == 0 ? 0 : max_nodes + 1;
 }
 
 int main()
 {
     int n, m;
     cin >> n >> m;
-    vector<vector<int>> adj(n);
+    adj.resize(n);
+    child.resize(n, -1);
+    dp.resize(n, -1);
+    d = n - 1;
 
     for (int i = 0; i < m; i++)
     {
@@ -53,22 +55,23 @@ int main()
         v--;
         adj[u].push_back(v);
     }
-    vector<int> child(n, -1);
-    vector<int> dp(n, -1); // dp[i] = max nodes from node i to node n-1
-    int ans = dfs(0, adj, child, dp);
-    if (ans == 0)
+
+    int max_nodes = dfs(0);
+    if (max_nodes == 0)
     {
         cout << "IMPOSSIBLE" << endl;
     }
     else
     {
-        cout << ans << endl;
+        cout << max_nodes << endl;
         int u = 0;
         while (u != n - 1)
         {
             cout << u + 1 << " ";
             u = child[u];
         }
-        cout << n << endl;
+        cout << n << " " << endl;
     }
+
+    return 0;
 }
