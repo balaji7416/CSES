@@ -74,12 +74,12 @@ Core Pattern:
     => Topological Sort + DP Propagation
 */
 
-int main()
+int32_t main()
 {
+    ios::sync_with_stdio(false);
     int n, m;
     cin >> n >> m;
     vector<vector<int>> adj(n);
-
     for (int i = 0; i < m; i++)
     {
         int u, v;
@@ -97,6 +97,7 @@ int main()
             inDegree[v]++;
         }
     }
+
     queue<int> q;
     for (int i = 0; i < n; i++)
     {
@@ -105,6 +106,7 @@ int main()
             q.push(i);
         }
     }
+
     vector<int> topo;
     while (!q.empty())
     {
@@ -121,12 +123,13 @@ int main()
         topo.push_back(u);
     }
 
-    vector<int> dp(n, -inf);
-    vector<int> parent(n, -1);
+    vector<int> dp(n, -1);
+    // dp[i] => max no.of nodes from node 0 to node i
     dp[0] = 1;
+    vector<int> parent(n, -1);
     for (auto u : topo)
     {
-        if (dp[u] == -inf)
+        if (dp[u] == -1)
             continue;
         for (auto v : adj[u])
         {
@@ -137,7 +140,8 @@ int main()
             }
         }
     }
-    if (dp[n - 1] == -inf)
+
+    if (dp[n - 1] == -1)
     {
         cout << "IMPOSSIBLE" << endl;
     }
@@ -145,18 +149,17 @@ int main()
     {
         stack<int> stk;
         int u = n - 1;
-        while (u != 0)
+        while (u != -1)
         {
             stk.push(u + 1);
             u = parent[u];
         }
-        stk.push(1);
         cout << stk.size() << endl;
         while (!stk.empty())
         {
             cout << stk.top() << " ";
             stk.pop();
         }
-        cout << endl;
     }
+    cout << endl;
 }
