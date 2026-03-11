@@ -4,7 +4,18 @@ using namespace std;
 #define int long long
 
 /*
+    Problem 1684: Giant Pizza
+    Pattern: Tarjan's algo + 2-SAT
+    Time: O(E+V) Space: O(E+V)
+    Link: https://cses.fi/problemset/task/1684
+*/
+
+/* Logic:
 2-SAT modelling used in this solution:
+
+2-SAT = Boolean satisfiability problem
+        where each clause has 2 literals
+#note: 3-SAT is NP-complete means there is no known polynomial time algorithm
 
 Each ingredient i is represented by two nodes in the graph:
     i       -> +i  (ingredient i chosen with '+')
