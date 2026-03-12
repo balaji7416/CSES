@@ -44,30 +44,20 @@ void solve1()
     for (int i = 0; i < n; i++)
     {
         auto &[n1, idx1] = pairs[i];
-        int req = target - n1;
-        int l = 0, r = n - 1;
+
+        int l = i + 1, r = n - 1;
         while (l < r)
         {
-            if (l == i)
-            {
-                l++;
-                continue;
-            }
-            if (r == i)
-            {
-                r--;
-                continue;
-            }
 
             auto &[n2, idx2] = pairs[l];
             auto &[n3, idx3] = pairs[r];
-
-            if (n2 + n3 == req)
+            int sum = n1 + n2 + n3;
+            if (sum == target)
             {
                 cout << idx1 + 1 << " " << idx2 + 1 << " " << idx3 + 1 << endl;
                 return;
             }
-            else if (n2 + n3 < req)
+            else if (sum < target)
             {
                 l++;
             }
