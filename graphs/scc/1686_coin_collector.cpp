@@ -129,6 +129,8 @@ int32_t main()
 
     // build the dag out of scc's
     dag.resize(tr.scc_count);
+
+    // for storing the coin of each scc
     coin.resize(tr.scc_count, 0);
 
     for (int u = 0; u < n; u++)
