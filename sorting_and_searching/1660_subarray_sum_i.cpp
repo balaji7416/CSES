@@ -50,6 +50,7 @@ int n, x;
 
 void solve1()
 {
+    /*method 1: works for both negative and positive number*/
     vector<int> prefix(n + 1, 0);
     for (int i = 1; i <= n; i++)
     {
@@ -66,6 +67,27 @@ void solve1()
     cout << ans << endl;
 }
 
+void solve2()
+{
+    /*works if the nums are positive (preferred if no nums are negative)*/
+    int l = 0, sum = 0;
+    int ans = 0;
+    for (int r = 0; r < n; r++)
+    {
+        sum += nums[r];
+        while (sum > x)
+        {
+            sum -= nums[l];
+            l++;
+        }
+        if (sum == x)
+        {
+            ans++;
+        }
+    }
+    cout << ans << endl;
+}
+
 int32_t main()
 {
     ios::sync_with_stdio(false);
@@ -75,6 +97,7 @@ int32_t main()
     {
         cin >> nums[i];
     }
-    solve1();
+    // solve1();
+    solve2();
     return 0;
 }
