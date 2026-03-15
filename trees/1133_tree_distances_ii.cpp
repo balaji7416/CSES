@@ -10,8 +10,8 @@ using namespace std;
     Link: https://cses.fi/problemset/task/1133
 */
 
-/*
-IDEA: Rerooting DP on trees.
+/*IDEA:
+Rerooting DP on trees.
 
 Goal: For every node u compute the sum of distances from u to all nodes.
 
