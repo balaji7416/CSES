@@ -51,7 +51,8 @@ jump 2^3 -> 2^2 -> 2^0
 Complexity:
 Preprocessing: O(n log n)
 Each query:    O(log n)
-Memory:        O(n log n)
+Time: O((n+q) log n)
+Memory:  O(n log n)
 */
 
 vector<int> parent;
