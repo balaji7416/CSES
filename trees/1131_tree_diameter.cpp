@@ -61,7 +61,7 @@ int32_t main()
         v--;
         adj[u].push_back(v);
         adj[v].push_back(u);
-    }
+        }
 
     auto [_, e1] = dfs(0, -1, 0);
     auto [diameter, e2] = dfs(e1, -1, 0);

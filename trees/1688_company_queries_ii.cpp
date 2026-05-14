@@ -41,6 +41,7 @@ Time:
 int32_t main()
 {
     ios::sync_with_stdio(false);
+
     int n, q;
     cin >> n >> q;
     vector<vector<int>> adj(n);
