@@ -63,9 +63,9 @@ int main()
         dp[0] = 1;
         for (int coin : nums)
         {
-            for (int i = coin; i <= x; i++)
+            for (int s = coin; s <= x; s++)
             {
-                dp[i] = (dp[i] + dp[i - coin]) % mod;
+                dp[s] = (dp[s - coin] + dp[s]) % mod;
             }
         }
         return dp[x];
